@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Prediction Results</h1>
+    <div class="result">
+        {% if error %}
+            <h2>Error:</h2>
+            <p>{{ error }}</p>
+        {% elif prediction is not none %}
+            <h2>Predicted Dengue Cases:</h2>
+            <p>{{ prediction }}</p>
+        {% endif %}
+    </div>
+
+    {% if precautions %}
+        <div class="precautions">
+            <h2>Precautions to Take:</h2>
+            <ul>
+                {% for precaution in precautions %}
+                    <li>{{ precaution }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+</body>
+</html>
